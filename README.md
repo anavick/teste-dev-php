@@ -3,15 +3,16 @@
 
 ## Como Rodar o Projeto
 
-1. **Instalar Dependências**: Execute `./vendor/bin/sail composer install`.
-2. **Configurar o Banco de Dados**: Atualize o arquivo `.env` com as credenciais do banco de dados.
-3. **Rodar Migrações**: Execute `./vendor/bin/sail artisan migrate` para criar as tabelas necessárias.
-4. **Iniciar o Servidor**: Use `./vendor/bin/sail artisan serve` para iniciar o servidor de desenvolvimento.
+1. **Entrar no Container**: Execute  `docker compose exec app bash`.
+2. **Instalar Dependências**: Execute `composer install`.
+3. **Configurar o Banco de Dados**: Atualize o arquivo `.env` com as credenciais do banco de dados.
+4. **Rodar Migrações**: Execute `php artisan migrate` para criar as tabelas necessárias.
+5. **Iniciar o Servidor**: Use `php artisan serve` para iniciar o servidor de desenvolvimento.
 
 ## Testes
 
-- **Seeders**: Utilize `./vendor/bin/sail artisan db:seed` para popular o banco de dados com dados de teste.
-- **Testes de Rotas**: As rotas podem ser testadas utilizando ferramentas como Postman.
+- **Seeders**: Utilize `php artisan db:seed` para popular o banco de dados com dados de teste.
+- **Testes de Rotas**: As rotas podem ser testadas utilizando ferramentas como Postman ou no Browser.
 
 
 ## Visão Geral
@@ -69,6 +70,6 @@ Este projeto é uma API para gerenciar fornecedores, permitindo operações CRUD
 - **PHP**: Versão compatível com Laravel.
 - **Laravel**: Framework PHP utilizado para o desenvolvimento da API.
 - **Banco de Dados**: Configurado para armazenar informações dos fornecedores.
->>>>>>> 4d00663 (projeto cadastro de fornecedores para teste da Revenda mais.)
+
 
 
