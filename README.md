@@ -1,3 +1,5 @@
+## Primeiramente peço que desculpem a demore e gostaria de informar que tive um problema para subir o projeto. Sem querer eu desaninhi as branchs main e nao conseguia abrir a PR. Precisei de ajuda de um amigo que conseguiu reverter para mim a situação.##
+
 
 # Documentação do Projeto Cadastro de Fornecedores
 
