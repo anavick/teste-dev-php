@@ -1,54 +1,74 @@
-## Teste para Desenvolvedor PHP/Laravel
 
-Bem-vindo ao teste de desenvolvimento para a posição de Desenvolvedor PHP/Laravel. 
+# Documentação do Projeto Cadastro de Fornecedores
 
-O objetivo deste teste é desenvolver uma API Rest para o cadastro de fornecedores, permitindo a busca por CNPJ ou CPF, utilizando Laravel no backend.
+## Como Rodar o Projeto
 
-## Descrição do Projeto
+1. **Instalar Dependências**: Execute `./vendor/bin/sail composer install`.
+2. **Configurar o Banco de Dados**: Atualize o arquivo `.env` com as credenciais do banco de dados.
+3. **Rodar Migrações**: Execute `./vendor/bin/sail artisan migrate` para criar as tabelas necessárias.
+4. **Iniciar o Servidor**: Use `./vendor/bin/sail artisan serve` para iniciar o servidor de desenvolvimento.
 
-### Backend (API Laravel):
+## Testes
 
-#### CRUD de Fornecedores:
-- **Criar Fornecedor:**
-  - Permita o cadastro de fornecedores usando CNPJ ou CPF, incluindo informações como nome/nome da empresa, contato, endereço, etc.
-  - Valide a integridade e o formato dos dados, como o formato correto de CNPJ/CPF e a obrigatoriedade de campos.
+- **Seeders**: Utilize `./vendor/bin/sail artisan db:seed` para popular o banco de dados com dados de teste.
+- **Testes de Rotas**: As rotas podem ser testadas utilizando ferramentas como Postman.
 
-- **Editar Fornecedor:**
-  - Facilite a atualização das informações de fornecedores, mantendo a validação dos dados.
 
-- **Excluir Fornecedor:**
-  - Possibilite a remoção segura de fornecedores.
+## Visão Geral
 
-- **Listar Fornecedores:**
-  - Apresente uma lista paginada de fornecedores, com filtragem e ordenação.
+Este projeto é uma API para gerenciar fornecedores, permitindo operações CRUD e consultas por CNPJ. A API é construída utilizando o framework Laravel e faz uso de serviços externos para obter informações de CNPJ.
 
-#### Migrations:
-- Utilize migrations do Laravel para definir a estrutura do banco de dados, garantindo uma boa organização e facilidade de manutenção.
+
+## Funcionalidades
+
+### 1. Listar Fornecedores
+
+- **Rota**: `GET /api/suppliers`
+- **Descrição**: Retorna uma lista de fornecedores com base em filtros opcionais (`name_company`, `ativo`).
+
+### 2. Buscar Fornecedor por CNPJ
+
+- **Rota**: `GET /api/suppliers/search-cnpj`
+- **Descrição**: Busca informações de um fornecedor utilizando o CNPJ.
+- **Parâmetro**: `cnpj` (string, obrigatório, tamanho 14)
+
+### 3. Criar Fornecedor
+
+- **Rota**: `POST /api/suppliers`
+- **Descrição**: Cria um novo fornecedor.
+- **Dados**: 
+  - `name` (opcional)
+  - `name_company` (opcional)
+  - `email` (obrigatório, único)
+  - `cnpj` (obrigatório, único, tamanho 14)
+  - `street`, `number`, `city`, `state`, `zip_code`, `contact` (obrigatórios)
+  - `complement`, `neighborhood`, `ativo` (opcionais)
+
+### 4. Mostrar Fornecedor
+
+- **Rota**: `GET /api/suppliers/{id}`
+- **Descrição**: Retorna os detalhes de um fornecedor específico pelo ID.
+
+### 5. Atualizar Fornecedor
+
+- **Rota**: `PUT /api/suppliers/{id}`
+- **Descrição**: Atualiza as informações de um fornecedor existente.
+- **Dados**: Mesmos campos que a criação, com validação de unicidade para `email` e `cnpj`.
+
+### 6. Deletar Fornecedor
+
+- **Rota**: `DELETE /api/suppliers/{id}`
+- **Descrição**: Remove um fornecedor do sistema.
+
+## Serviços Externos
+
+- **BrasilApiService**: Serviço utilizado para buscar informações de CNPJ através da API Brasil.
 
 ## Requisitos
 
-### Backend:
-- Implementar busca por CNPJ na [BrasilAPI](https://brasilapi.com.br/docs#tag/CNPJ/paths/~1cnpj~1v1~1{cnpj}/get) ou qualquer outro endpoint público.
-
-## Tecnologias a serem utilizadas
-- Framework Laravel (PHP) 9.x ou superior
-- MySQL ou Postgres
-
-## Critérios de Avaliação
-- Adesão aos requisitos funcionais e técnicos.
-- Qualidade do código, incluindo organização, padrões de desenvolvimento e segurança.
-- Documentação do projeto, incluindo um README detalhado com instruções de instalação e operação.
-
-## Bônus
-- Implementação de Repository Pattern.
-- Implementação de testes automatizados.
-- Dockerização do ambiente de desenvolvimento.
-- Implementação de cache para otimizar o desempenho.
-
-## Entrega
-- Para iniciar o teste, faça um fork deste repositório; Se você apenas clonar o repositório não vai conseguir fazer push.
-- Crie uma branch com o nome que desejar;
-- Altere o arquivo README.md com as informações necessárias para executar o seu teste (comandos, migrations, seeds, etc);
-- Depois de finalizado, envie-nos o pull request;
+- **PHP**: Versão compatível com Laravel.
+- **Laravel**: Framework PHP utilizado para o desenvolvimento da API.
+- **Banco de Dados**: Configurado para armazenar informações dos fornecedores.
+>>>>>>> 4d00663 (projeto cadastro de fornecedores para teste da Revenda mais.)
 
 
